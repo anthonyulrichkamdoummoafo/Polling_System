@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-module.exports = async () => {
-    const connectionParams = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    };
+ const connection = async () => {
     try {
-        mongoose.connect(process.env.DB, connectionParams);
+        mongoose.connect(process.env.DB);
         console.log('Connected to database successfully');
     }catch (error) {
         console.log(error);
         console.log('Could not connect to database!');
     }
 }
+
+export default connection

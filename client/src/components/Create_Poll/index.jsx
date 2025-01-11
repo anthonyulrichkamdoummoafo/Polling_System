@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 
 const Create_Poll = () => {
   const [title, setTitle] = useState("");
-  const [pollType, setPollType] = useState("multiple-choice");
-  const [options, setOptions] = useState([{ value: "" }, { value: "" }]); // Default options
+  const [candidates, setcandidates] = useState([{ value: "" }, { value: "" }]); // Default candidates
   const [showExtra, setShowExtra] = useState(false);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null); // To store the selected image file
-  const [allowMultipleOptions, setAllowMultipleOptions] = useState(false);
+  const [allowMultiplecandidates, setAllowMultiplecandidates] = useState(false);
   const [selectionType, setSelectionType] = useState("unlimited");
   const [exactSelection, setExactSelection] = useState("");
 
@@ -18,21 +17,21 @@ const Create_Poll = () => {
   const fileInputRef = useRef(null);
 
   const handleAddOption = () => {
-    setOptions([...options, { value: "" }]);
+    setcandidates([...candidates, { value: "" }]);
   };
 
   const handleRemoveOption = (index) => {
-    if (options.length > 2) {
-      setOptions(options.filter((_, i) => i !== index));
+    if (candidates.length > 2) {
+      setcandidates(candidates.filter((_, i) => i !== index));
     } else {
-      alert("At least two options are required.");
+      alert("At least two candidates are required.");
     }
   };
 
   const handleChangeOption = (index, event) => {
-    const newOptions = [...options];
-    newOptions[index].value = event.target.value;
-    setOptions(newOptions);
+    const newcandidates = [...candidates];
+    newcandidates[index].value = event.target.value;
+    setcandidates(newcandidates);
   };
 
   const handleSubmit = (event) => {
@@ -43,17 +42,16 @@ const Create_Poll = () => {
       return;
     }
 
-    if (options.some((option) => !option.value.trim())) {
-      alert("All options must have a value.");
+    if (candidates.some((option) => !option.value.trim())) {
+      alert("All candidates must have a value.");
       return;
     }
 
     // Prepare the poll data
     const pollData = {
       title,
-      pollType,
-      options: options.map((option) => option.value),
       description,
+      candidates: candidates.map((option) => option.value),
       image,
     };
 
@@ -178,24 +176,10 @@ const Create_Poll = () => {
               )}
             </div>
 
-            {/* Poll Type */}
+            {/* Answer candidates */}
             <div className={styles.formGroup}>
-              <label htmlFor="poll-type">Poll type</label>
-              <select
-                id="poll-type"
-                name="pollType"
-                value={pollType}
-                onChange={(e) => setPollType(e.target.value)}
-              >
-                <option value="multiple-choice">Multiple choice</option>
-                <option value="single-choice">Single choice</option>
-              </select>
-            </div>
-
-            {/* Answer Options */}
-            <div className={styles.formGroup}>
-              <label>Answer Options</label>
-              {options.map((option, index) => (
+              <label>Answer candidates</label>
+              {candidates.map((option, index) => (
                 <div key={index} className={styles.optionGroup}>
                   <input
                     type="text"
@@ -205,7 +189,7 @@ const Create_Poll = () => {
                     onChange={(event) => handleChangeOption(index, event)}
                     required
                   />
-                  {options.length > 2 && (
+                  {candidates.length > 2 && (
                     <button
                       type="button"
                       className={styles.removeOption}
@@ -232,14 +216,14 @@ const Create_Poll = () => {
               <label className={styles.checkboxLabel}>
                 <input
                   type="checkbox"
-                  name="allowMultipleOptions"
-                  checked={allowMultipleOptions}
-                  onChange={(e) => setAllowMultipleOptions(e.target.checked)}
+                  name="allowMultiplecandidates"
+                  checked={allowMultiplecandidates}
+                  onChange={(e) => setAllowMultiplecandidates(e.target.checked)}
                 />
-                Allow selection of multiple options
+                Allow selection of multiple candidates
               </label>
 
-              {allowMultipleOptions && (
+              {allowMultiplecandidates && (
                 <div className={styles.selectionDropdown}>
                   <select
                     value={selectionType}
@@ -277,12 +261,7 @@ const Create_Poll = () => {
                   <option value="cookie">One vote per browser</option>
                 </select>
               </div>
-              <div className={styles.settingItem}>
-                <label>
-                  <input type="checkbox" name="votingInterval" />
-                  Voting interval
-                </label>
-              </div>
+              
               <a href="#" className={styles.advancedSettings}>
                 Show advanced settings
               </a>
