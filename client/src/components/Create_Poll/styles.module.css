@@ -1,0 +1,364 @@
+/* General Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* background-image: url('home.jpg'); */
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+    background-size: cover;  /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    /* height: 100vh; */
+
+}
+
+/* Header Section with Buttons */
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 20px;
+    background-color: #fff; /* Transparent white background */
+    transition: all 0.3s ease-in-out;
+}
+.header.scrolled {
+    border-bottom: 3px solid #33a68a; /* Green border when scrolled */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    /* background-color: #fff; White background when scrolled */
+}
+
+.cta_buttons {
+    display: flex;
+    gap: 10px;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav_item {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav_item:hover {
+    text-decoration: underline;
+}
+
+/* Authentication Buttons */
+.authButtons {
+    display: flex;
+    gap: 15px;
+}
+
+.authButtons a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: #007bff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.authButtons a.signup {
+    background-color: #28a745;
+}
+
+.authButtons a:hover {
+    background-color: #0056b3;
+}
+
+.authButtons a.signup:hover {
+    background-color: #218838;
+}
+
+/* Form Container */
+.containerBox {
+    padding: 20px;
+    max-width: 800px;
+    margin: 70px auto;
+    background-color: #fff;
+    border-radius: 8px ;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 99%;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust transparency */
+    backdrop-filter: blur(5px);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    /* margin-bottom: 10px; */
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    outline: none;
+    border: none;
+    /* margin: 5px 0;                                         */
+}
+
+/* Input & Select Styles */
+input[type="text"], select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-color 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Add Description */
+.addDescription {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.addDescription:hover {
+    text-decoration: underline;
+}
+
+/* Add Option Button */
+.addOption {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addOption:hover {
+    background-color: #0056b3;
+}
+
+/* Add Other Link */
+.addOther {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.addOther:hover {
+    text-decoration: underline;
+}
+
+/* Answer Options */
+.optionGroup {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.removeOption {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.removeOption:hover {
+    background-color: #c82333;
+}
+
+/* Settings Styles */
+.settings {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.settings h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.settingItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.settingItem label {
+    font-size: 14px;
+}
+
+.settingItem input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Advanced Settings */
+.advancedSettings {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.advancedSettings:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.createPollBtn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.createPollBtn:hover {
+    background-color: #218838;
+}
+
+/* Extra fields container */
+.extraDetails {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Description Textarea */
+.descriptionTextarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allows vertical resizing */
+}
+
+/* Add Image Button */
+.addImageBtn {
+    align-self: flex-start; /* Align the button to the left */
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addImageBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Extra fields container */
+.extraDetails {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Description Textarea */
+  .descriptionTextarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  /* Add Image Button */
+  .addImageBtn {
+    align-self: flex-start;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addImageBtn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Image Preview (optional) */
+  .imagePreview {
+    margin-top: 10px;
+  }
+  
+  .previewImg {
+    max-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .selectionDropdown {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dropdown {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .numberInput {
+    padding: 5px;
+    width: 80px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  
