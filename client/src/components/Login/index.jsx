@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import {  Link  } from 'react-router-dom';
+import {  Link, useNavigate  } from 'react-router-dom';
 import styles from './styles.module.css';
 import axios from 'axios';
 
 const Signup = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -18,10 +19,11 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:8080/api/auth";
+            const url = "/api/auth";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem('token', res.token); 
-            window.location = '/';
+            localStorage.setItem('userId', res.value._id); 
+            navigate("/");
         } catch (error) {
             if (error.response && error.response.status >= 400 && error.response.status <= 500) {
                 setError(error.response.data.message);

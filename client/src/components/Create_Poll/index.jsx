@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Create_Poll = () => {
   const [title, setTitle] = useState("");
-  const [candidates, setcandidates] = useState([{ value: "" }, { value: "" }]); // Default candidates
+  const [candidates, setcandidates] = useState([]); // Default candidates
   const [showExtra, setShowExtra] = useState(false);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null); // To store the selected image file
@@ -12,6 +13,23 @@ const Create_Poll = () => {
   const [selectionType, setSelectionType] = useState("unlimited");
   const [exactSelection, setExactSelection] = useState("");
 
+  const HandleSubmit = () => {
+    axios
+      .post("/api/pool", {
+        title,
+        description,
+        candidates: candidates,
+        image: "httpsasasas",
+        status: false,
+        creator: localStorage.getItem("userId"),
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data.msg);
+      });
+  };
 
   // useRef to trigger the hidden file input
   const fileInputRef = useRef(null);
@@ -90,7 +108,9 @@ const Create_Poll = () => {
     <div className={styles.container}>
       <div className={styles.login_container}>
         {/* Header with Logo and Navigation */}
-        <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+        <header
+          className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
+        >
           <div className={styles.logo}>
             Pulse <span>Vote</span>
           </div>
@@ -101,7 +121,11 @@ const Create_Poll = () => {
             <Link to="/browse-polls" className={styles.nav_item}>
               Browse Polls
             </Link>
-            <Link to="/profile" className={styles.nav_item} onClick={handleLogout}>
+            <Link
+              to="/profile"
+              className={styles.nav_item}
+              onClick={handleLogout}
+            >
               Logout
             </Link>
           </nav>
@@ -109,9 +133,11 @@ const Create_Poll = () => {
 
         <div className={styles.containerBox}>
           <h1 className={styles.title}>Create a Poll</h1>
-          <p className={styles.subtitle}>Complete the below fields to create your poll.</p>
+          <p className={styles.subtitle}>
+            Complete the below fields to create your poll.
+          </p>
 
-          <form className={styles.container} onSubmit={handleSubmit}>
+          {/* <form className={styles.container} onSubmit={handleSubmit}> */}
             {/* Title Input and Extra Fields */}
             <div className={styles.formGroup}>
               <input
@@ -202,7 +228,11 @@ const Create_Poll = () => {
               ))}
             </div>
 
-            <button type="button" className={styles.addOption} onClick={handleAddOption}>
+            <button
+              type="button"
+              className={styles.addOption}
+              onClick={handleAddOption}
+            >
               + Add option
             </button>
             {/* <a href="#" className={styles.addOther}>
@@ -213,40 +243,41 @@ const Create_Poll = () => {
             <div className={styles.settings}>
               <h3>Settings</h3>
               <div className={styles.settingItem}>
-              <label className={styles.checkboxLabel}>
-                <input
-                  type="checkbox"
-                  name="allowMultiplecandidates"
-                  checked={allowMultiplecandidates}
-                  onChange={(e) => setAllowMultiplecandidates(e.target.checked)}
-                />
-                Allow selection of multiple candidates
-              </label>
+                <label className={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    name="allowMultiplecandidates"
+                    checked={allowMultiplecandidates}
+                    onChange={(e) =>
+                      setAllowMultiplecandidates(e.target.checked)
+                    }
+                  />
+                  Allow selection of multiple candidates
+                </label>
 
-              {allowMultiplecandidates && (
-                <div className={styles.selectionDropdown}>
-                  <select
-                    value={selectionType}
-                    onChange={(e) => setSelectionType(e.target.value)}
-                    className={styles.dropdown}
-                  >
-                    <option value="unlimited">Unlimited</option>
-                    <option value="exact">Exact Number</option>
-                  </select>
+                {allowMultiplecandidates && (
+                  <div className={styles.selectionDropdown}>
+                    <select
+                      value={selectionType}
+                      onChange={(e) => setSelectionType(e.target.value)}
+                      className={styles.dropdown}
+                    >
+                      <option value="unlimited">Unlimited</option>
+                      <option value="exact">Exact Number</option>
+                    </select>
 
-                  {selectionType === "exact" && (
-                    <input
-                      type="number"
-                      min="1"
-                      value={exactSelection}
-                      onChange={(e) => setExactSelection(e.target.value)}
-                      className={styles.numberInput}
-                      placeholder="Enter number"
-                    />
-                  )}
-                </div>
-              )}
-
+                    {selectionType === "exact" && (
+                      <input
+                        type="number"
+                        min="1"
+                        value={exactSelection}
+                        onChange={(e) => setExactSelection(e.target.value)}
+                        className={styles.numberInput}
+                        placeholder="Enter number"
+                      />
+                    )}
+                  </div>
+                )}
               </div>
               <div className={styles.settingItem}>
                 <label>
@@ -261,17 +292,21 @@ const Create_Poll = () => {
                   <option value="cookie">One vote per browser</option>
                 </select>
               </div>
-              
+
               <a href="#" className={styles.advancedSettings}>
                 Show advanced settings
               </a>
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className={styles.createPollBtn}>
+            <button
+              type="submit"
+              className={styles.createPollBtn}
+              onClick={()=> HandleSubmit()}
+            >
               Create poll
             </button>
-          </form>
+          {/* </form> */}
         </div>
       </div>
     </div>
