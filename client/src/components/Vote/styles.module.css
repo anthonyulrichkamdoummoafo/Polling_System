@@ -1,0 +1,166 @@
+/* General Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    height: 100vh; /* Makes sure the container takes full viewport height */
+}
+
+/* Header Section */
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.header.scrolled {
+  border-bottom: 3px solid #33a68a;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav_item {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav_item:hover {
+  color: #33a68a;
+  text-decoration: underline;
+}
+
+/* Poll Container */
+.pollContainer {
+  max-width: 90vw;
+  width: 400px;
+  margin: 8rem 15rem 2rem ;
+  padding: 20px;
+  border: 1px solid #f1f1f1;
+  border-radius: 8px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Poll Question */
+.title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.author {
+  font-size: 12px;
+  color: gray;
+}
+
+.pollImage img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.choiceText {
+  font-weight: bold;
+}
+
+.option {
+  display: block;
+  margin: 5px 0;
+}
+
+.label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.pollActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Vote Button */
+.voteBtn {
+  background-color: #7b42f6;
+  color: white;
+}
+
+.voteBtn:hover {
+  background-color: #5e30c5;
+}
+
+/* Results Button */
+.resultsBtn {
+  background-color: #ddd;
+}
+
+.resultsBtn:hover {
+  background-color: #c0c0c0;
+}
+
+/* Share Button */
+.shareBtn {
+  background-color: #f3f3f3;
+}
+
+.shareBtn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .pollContainer {
+      width: 95vw;
+  }
+
+  .nav {
+      gap: 10px;
+  }
+}

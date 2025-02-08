@@ -17,7 +17,9 @@ function App() {
       <Route path="/login" exact element={<Login />} />
       <Route path="/create-poll" exact element={<Create_Poll />} />
       <Route path="/" exact element={<Navigate replace to="/home" />} />
-      <Route path="/vote/:id" element={<Vote/>} />
+      {/* <Route path="/vote/:id" element={<Vote/>} /> */}
+      <Route path="/vote" element={<Vote/>} />
+
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );

@@ -137,7 +137,7 @@ const Create_Poll = () => {
             Complete the below fields to create your poll.
           </p>
 
-          {/* <form className={styles.container} onSubmit={handleSubmit}> */}
+          <form className={styles.container} onSubmit={handleSubmit}>
             {/* Title Input and Extra Fields */}
             <div className={styles.formGroup}>
               <input
@@ -306,7 +306,7 @@ const Create_Poll = () => {
             >
               Create poll
             </button>
-          {/* </form> */}
+          </form>
         </div>
       </div>
     </div>
